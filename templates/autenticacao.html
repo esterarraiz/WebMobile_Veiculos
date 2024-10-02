@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Carja - Aluguel de veículos</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
+        <div id="welcome">
+            <div class="card-welcome">
+                <h1>Seja Bem Vindo (a)!</h1>
+                <h4>Tenha a liberdade de dirigir o carro dos seus sonhos, <br> quando e onde você quiser!</h3>
+            </div>
+        </div>
+        <div id="login">
+            <form action="/" method="POST">
+            {% csrf_token %}
+                <div class="card-header">
+                    <h1>Login</h1>
+                </div>
+                <div class="card-content">
+                    <div class="card-content-area">
+                        <label for="usuario">Usuário:</label>
+                        <input type="text" name='usuario' id="usuario" autocomplete="on">
+                    </div>
+                    <div class="card-content-area">
+                        <label for="password">Senha</label>
+                        <input type="password" name='senha' id="password" autocomplete="off">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Entrar" class="submit">
+                    <a href="#" class="recuperar_senha">Esqueceu a senha?</a>
+                </div>
+                <!-- Mensagem de erro -->
+                {% if mensagem %}
+                    <div class="alert alert-danger">
+                        {{ mensagem }}
+                    </div>
+                {% endif %}
+            </form>
+        </div>
+    </body>
+</html>

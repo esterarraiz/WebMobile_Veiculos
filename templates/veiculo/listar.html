@@ -1,0 +1,42 @@
+{% extends "../base.html" %} 
+
+{% load static %} 
+
+{% block css_local %}
+    <style>
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            {% for veiculo in veiculos %}
+
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+
+                    {% if veiculo.foto %}
+                    <img src="{{ veiculo.foto.url }}" class="card-img-top" alt="{{ veiculo.modelo }} Image">
+                    {% else %}
+                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Placeholder Image">
+                    {% endif %}
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ veiculo.get_nome_marca }} - {{ veiculo.modelo }}</h5>
+                        <p class="card-text">Ano: {{ veiculo.ano }}</p>
+                        <div class="d-grid gap-2 d-md-block">
+                            <a class="btn btn-warning" href='/veiculo/{{ veiculo.id }}' type="button">Editar</a>
+                            <a class="btn btn-danger" href='/veiculo/deletar/{{ veiculo.id }}' type="button">Deletar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

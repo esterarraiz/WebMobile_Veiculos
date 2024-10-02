@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        {% load static%}
+        <meta charset="UTF-8">
+        <title>Desenvolvimento WebMobile</title>
+
+        <link type="text/css" rel="stylesheet" href="{% static 'bootstrap-5.3.3/css/bootstrap.css' %}">
+        <script type="text/javascript" src="{% static 'bootstrap-5.3.3/js/bootstrap.js' %}"></script>
+
+        
+
+        <style>
+            .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        </style>
+        {% block css_local %}{% endblock %}
+    </head>
+
+    <body>
+        
+        <div id="menu-superior">
+            {% block menu_superior %}
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                <a class="navbar-brand" href="#">Veiculos</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/veiculo/">Página Inicial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/veiculo/novo/">Adicionar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout/">Sair</a>
+                    </li>
+                    </ul>
+                </div>
+                </div>
+            </nav>
+            {% endblock %}
+        </div>
+
+        <div id="conteudo">
+            {% block content %} {% endblock %}
+        </div>
+
+    </body>
+    </html>
