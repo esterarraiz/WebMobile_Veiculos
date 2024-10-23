@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -8,32 +8,18 @@
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     </head>
     <body>
-        <div id="welcome">
-            <div class="card-welcome">
-                <h1>Seja Bem Vindo (a)!</h1>
-                <h4>Tenha a liberdade de dirigir o carro dos seus sonhos, <br> quando e onde você quiser!</h3>
+        <div class="login-container">
+            <div class="login-logo">
+                <img src="{% static 'img/logo1.svg' %}" alt="Logo" class="logo">
             </div>
-        </div>
-        <div id="login">
-            <form action="/" method="POST">
+            <form class="login-form" action="/" method="POST">
             {% csrf_token %}
-                <div class="card-header">
-                    <h1>Login</h1>
-                </div>
-                <div class="card-content">
-                    <div class="card-content-area">
-                        <label for="usuario">Usuário:</label>
-                        <input type="text" name='usuario' id="usuario" autocomplete="on">
-                    </div>
-                    <div class="card-content-area">
-                        <label for="password">Senha</label>
-                        <input type="password" name='senha' id="password" autocomplete="off">
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <input type="submit" value="Entrar" class="submit">
-                    <a href="#" class="recuperar_senha">Esqueceu a senha?</a>
-                </div>
+                <label for="login">Login</label>
+                <input type="text" name='usuario' id="usuario" autocomplete="on">
+                <label for="password">Senha</label>
+                <input type="password" name='senha' id="password" autocomplete="off">
+                <button type="submit">ENTRAR</button>
+                <p>Não tem cadastro? <a href="#">Criar uma conta</a></p>
                 <!-- Mensagem de erro -->
                 {% if mensagem %}
                     <div class="alert alert-danger">

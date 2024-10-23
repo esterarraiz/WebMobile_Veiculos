@@ -1,12 +1,11 @@
-from django.shortcuts import render
-from django.views.generic import ListView, CreateView
-from django.views import View
-from veiculo.models import Veiculo
+from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import FileResponse, Http404
-from django.core.exceptions import ObjectDoesNotExist
-from django.urls import reverse_lazy
+from django.shortcuts import render
+from django.views.generic import View, ListView, CreateView, UpdateView, DeleteView
+from veiculo.models import Veiculo
 from veiculo.forms import FormularioVeiculo
+from django.urls import reverse_lazy
 
 class ListarVeiculos(LoginRequiredMixin, ListView):
     model = Veiculo
@@ -28,3 +27,15 @@ class FotoVeiculo(View):
             raise Http404("Foto não encontrada ou acesso não autorizado!")
         except Exception as exception:
             raise exception
+        return 0
+        
+class EditarVeiculo(LoginRequiredMixin, UpdateView):
+    model = Veiculo
+    form_class = FormularioVeiculo
+    template_name = 'veiculo/editar.html'
+    success_url = reverse_lazy('listar-veiculos')
+
+class DeletarVeiculo(LoginRequiredMixin, DeleteView):
+    model = Veiculo
+    template_name = 'veiculo/deletar.html'
+    success_url = reverse_lazy('listar-veiculos')
