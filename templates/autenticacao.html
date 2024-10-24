@@ -14,9 +14,9 @@
             </div>
             <form class="login-form" action="/" method="POST">
             {% csrf_token %}
-                <label for="login">Login</label>
+                <label for="login">Login:</label>
                 <input type="text" name='usuario' id="usuario" autocomplete="on">
-                <label for="password">Senha</label>
+                <label for="password">Senha:</label>
                 <input type="password" name='senha' id="password" autocomplete="off">
                 <button type="submit">ENTRAR</button>
                 <p>Não tem cadastro? <a href="#">Criar uma conta</a></p>
