@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-+qaw!3d*&+6e!-3qg$ivmat(m7*(n95calvy*1a3u2bbn2=t4a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'veiculo.apps.VeiculoConfig',
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken'
 ]
@@ -50,7 +51,19 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    # Outras configurações REST, caso haja.
+}
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8100",  
+]
+
 
 ROOT_URLCONF = 'sistema.urls'
 
@@ -118,6 +131,7 @@ USE_I18N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
@@ -132,3 +146,5 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/'
+
+CORSORIGIN_ALLOW_ALL = True
